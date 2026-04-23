@@ -6,32 +6,26 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
-        //
-        Schema::create('pengurus', function (Blueprint $table){
-            $table->id();
-            $table->string('nama', 50);
-            $table->string('jabatan', 30);
-            $table->string('no_hp', 20)->nullable();
-            $table->string('email', 50)->nullable();
-            $table->string('foto')->default('pengurus/default.jpg');
-            $table->string('bio', 100)->nullable();
-            $table->enum ('status', ['Aktif', 'Non-Aktif'])->default('Aktif');
-            $table->timestamps('created_at')->useCurrent();
-            $table->timestamps('updated_at')->nullable()->useCurrentOnUpdate();
-
+        Schema::create('pengguna', function (Blueprint $table) {
+            $table->integer('id_pengguna')->autoIncrement()->primary(); // Sesuai manual: INT
+            $table->string('nama', 45);
+            $table->string('no_hp', 15)->nullable();
+            $table->string('alamat', 45)->nullable();
+            $table->integer('Akun_id_Akun')->nullable(); // FK ke Akun
+            
+            // Timestamps yang benar:
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
+            
+            // Foreign Key constraint (opsional, bisa lewat migration atau manual):
+            // $table->foreign('Akun_id_Akun')->references('id_Akun')->on('Akun');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('pengguna');
     }
 };
