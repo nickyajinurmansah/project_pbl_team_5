@@ -24,9 +24,9 @@ return new class extends Migration
              
             $table->string('nama_Ortu', 45)->nullable(); 
             $table->string('Foto', 50)->nullable(); 
-            $table->enum('kategori_anak', ['Yatim', 'Piatu', 'Yatim Piatu', 'Dhuafa']);
-            $table->timestamps('created_at');
-            $table->timestamps('updated_at');
+            $table->enum('kategori_anak', ['Internal', 'External']);
+            $table->timestamps('created_at')->useCurrent();
+            $table->timestamps('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 
