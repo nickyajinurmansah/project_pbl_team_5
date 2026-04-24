@@ -13,7 +13,15 @@ class AnakPanti extends Model
     public $timestamps = true; // 
 
     protected $fillable = [
-        'NIK', 'nama', 'tgl_lahir', 'jns_kelamin', 'alamat', 
-        'tgl_masuk', 'status', 'nama_Ortu', 'Foto', 'kategori_anak'
+        'NIK', //edit biar rapi
+        'nama',
+        'tgl_lahir', 
+        'jns_kelamin', 
+        'alamat', 
+        'tgl_masuk', 
+        'status', 
+        'nama_Ortu', 
+        'Foto', 
+        'kategori_anak'
     ];
 }

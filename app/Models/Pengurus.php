@@ -2,29 +2,24 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Pengurus extends Model
 {
-    use HasFactory;
+    //
+    Use hasFactory;
 
-    protected $table = 'pengguna';                
-    protected $primaryKey = 'id_pengguna';        
-    public $incrementing = true;
-    protected $keyType = 'int';                   
-    public $timestamps = true;                    
+    // Menentukan nama tabel secara eksplisit (opsional tapi disarankan)
+    protected $table = 'pengurus';
 
-    protected $fillable = [
-        'nama', 
-        'no_hp', 
-        'alamat', 
-        'Akun_id_Akun'
+     protected $fillable = [
+        'id',
+        'nama',
+        'jabatan', 
+        'no_hp',
+        'email', 
+        'foto',
+        'bio',
+        'status', 
     ];
-
-    // Relasi ke tabel Akun (opsional)
-    public function akun()
-    {
-        return $this->belongsTo(Akun::class, 'Akun_id_Akun', 'id_Akun');
-    }
 }
