@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('foto', 255)->default('default-Pengurus.jpg');
             $table->string('bio', 100);
             $table->enum('status', ['Aktif', 'non-Aktif'])->default('non-Aktif');
-            $table->timestamps('created_at')->useCurrent();
-            $table->timestamps('updated_at')->nullable()->useCurrentOnUpdate();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
 
