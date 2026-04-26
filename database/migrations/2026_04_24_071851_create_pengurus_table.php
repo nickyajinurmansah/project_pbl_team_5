@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pengurus', function (Blueprint $table) {
-            $table->char('id', 3)->primary;
+            $table->id();
             $table->string('nama', 45);
             $table->string('jabatan', 45);
             $table->string('no_hp',20);

@@ -3,23 +3,21 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pengurus extends Model
 {
-    //
-    Use hasFactory;
+    use HasFactory;
 
-    // Menentukan nama tabel secara eksplisit (opsional tapi disarankan)
     protected $table = 'pengurus';
 
-     protected $fillable = [
-        'id',
+    protected $fillable = [
         'nama',
-        'jabatan', 
+        'jabatan',
         'no_hp',
-        'email', 
+        'email',
         'foto',
         'bio',
-        'status', 
+        'status',
     ];
 }
