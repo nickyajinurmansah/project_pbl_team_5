@@ -21,4 +21,10 @@ class Donatur extends Model
         'email', 
         'alamat'
     ];
+
+    protected $casts = [
+        'created_at' => 'datetime:d M Y, H:i',
+        'updated_at' => 'datetime:d M Y, H:i',
+    ];
+
 }

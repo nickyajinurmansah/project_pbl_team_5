@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PengurusController; //
+use App\Http\Controllers\DonaturController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -31,6 +32,11 @@ use App\Http\Controllers\DataAnakController;
 
 Route::get('/', function () {
     return redirect()->route('data-anak.index');
-});
+// donatur
+Route::get('/', function () {
+    return redirect()->route('donatur.index');
 
+});
+});
 Route::resource('data-anak', DataAnakController::class);
+Route::resource('donatur', DonaturController::class);
