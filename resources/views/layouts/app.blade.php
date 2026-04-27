@@ -22,7 +22,7 @@
                 </div>
 
                 <h1 class="text-3xl font-bold text-green-900">
-                    {{ $header ?? 'Dashboard' }}
+                    {{ $header ?? 'Data Anak' }}
                 </h1>
             </div>
 
@@ -43,10 +43,10 @@
                 </div>
 
                 <!-- logout -->
-                <form method="POST" action="{{ route('logout') }}">
+                <!-- <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button type="submit">Logout</button>
-                </form>
+                </form> -->
 
             </div>
         </header>

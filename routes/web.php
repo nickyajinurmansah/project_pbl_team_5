@@ -25,3 +25,12 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// data anak
+use App\Http\Controllers\DataAnakController;
+
+Route::get('/', function () {
+    return redirect()->route('data-anak.index');
+});
+
+Route::resource('data-anak', DataAnakController::class);

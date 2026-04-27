@@ -50,13 +50,13 @@
     </nav>
 
     <!-- LOGOUT -->
-    <div class="p-4">
+    <!-- <div class="p-4">
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button class="w-full bg-red-500 text-white py-2 rounded-xl">
                 Logout
             </button>
         </form>
-    </div>
+    </div> -->
 
 </aside>
