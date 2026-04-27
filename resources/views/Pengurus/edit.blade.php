@@ -19,7 +19,11 @@
 
     <textarea name="bio" class="border p-2 w-full mb-2">{{ $pengurus->bio }}</textarea>
 
-    <input type="text" name="status" value="{{ $pengurus->status }}" class="border p-2 w-full mb-2">
+    <!-- STATUS DROPDOWN -->
+    <select name="status" class="border p-2 w-full mb-2">
+        <option value="Aktif" {{ $pengurus->status == 'Aktif' ? 'selected' : '' }}>Aktif</option>
+        <option value="non-Aktif" {{ $pengurus->status == 'non-Aktif' ? 'selected' : '' }}>Non-Aktif</option>
+    </select>
 
     <button class="bg-yellow-500 text-white px-4 py-2">Update</button>
 </form>
