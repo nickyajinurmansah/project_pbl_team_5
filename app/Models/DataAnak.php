@@ -14,28 +14,26 @@ class DataAnak extends Model
     public $incrementing = true;
     protected $keyType = 'integer';
 
+     // ← PENTING: Set false karena tabel tidak punya created_at/updated_at
     public $timestamps = false;
 
     protected $fillable = [
         'NIK',
-        'nama',
-        'tgl_lahir',
-        'jns_kelamin',
+        'nama_lengkap',
+        'tanggal_lahir',
+        'jenis_kelamin',      // ← PERBAIKAN
         'alamat',
-        'tgl_masuk',
+        'tanggal_masuk',
         'status',
-        'nama_Ortu',
-        'Foto',
+        'nama_ayah',
+        'nama_ibu',
+        'alamat_orang_tua',
+        'foto_anak',          // ← PERBAIKAN (dari 'Foto')
         'kategori_anak',
     ];
 
     protected $casts = [
-        'tgl_lahir' => 'date',
-        'tgl_masuk' => 'date',
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
+        'tanggal_lahir' => 'date',
+        'tanggal_masuk' => 'date',
     ];
-
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
 }

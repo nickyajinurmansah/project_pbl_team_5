@@ -45,9 +45,9 @@
         <div class="flex items-center gap-4 mb-6 pb-6 border-b border-gray-200">
             <!-- Foto Profil Kecil -->
             <div class="flex-shrink-0">
-                @if($data_anak->Foto)
-                    <img src="{{ asset('storage/' . $data_anak->Foto) }}" 
-                         alt="{{ $data_anak->nama }}" 
+                @if($data_anak->foto_anak)
+                    <img src="{{ asset('storage/' . $data_anak->foto_anak) }}" 
+                         alt="{{ $data_anak->nama_lengkap }}" 
                          class="w-20 h-20 rounded-full object-cover border-2 border-green-300">
                 @else
                     <div class="w-20 h-20 rounded-full bg-gray-300 flex items-center justify-center border-2 border-green-300">
@@ -58,7 +58,7 @@
 
             <!-- Nama dan Badge -->
             <div class="flex-1">
-                <h3 class="text-xl font-bold text-gray-800 mb-1">{{ $data_anak->nama }}</h3>
+                <h3 class="text-xl font-bold text-gray-800 mb-1">{{ $data_anak->nama_lengkap }}</h3>
                 <p class="text-sm text-gray-600 mb-2">NIK: {{ $data_anak->NIK }}</p>
                 <div class="flex gap-2">
                     <span class="px-3 py-1 rounded-full text-xs font-bold 
@@ -75,35 +75,54 @@
 
         <!-- Informasi Detail - Grid 2 Kolom -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- ✅ PERBAIKAN: tanggal_lahir -->
             <div class="bg-gray-50 p-3 rounded-lg">
                 <p class="text-xs text-gray-600 mb-1">Tanggal Lahir</p>
-                <p class="text-sm font-bold text-gray-800">{{ $data_anak->tgl_lahir->format('d M Y') }}</p>
+                <p class="text-sm font-bold text-gray-800">{{ $data_anak->tanggal_lahir?->format('d M Y') }}</p>
             </div>
 
+            <!-- ✅ PERBAIKAN: jenis_kelamin -->
             <div class="bg-gray-50 p-3 rounded-lg">
                 <p class="text-xs text-gray-600 mb-1">Jenis Kelamin</p>
                 <p class="text-sm font-bold text-gray-800">
-                    {{ $data_anak->jns_kelamin == 'L' ? 'Laki-laki' : 'Perempuan' }}
+                    {{ $data_anak->jenis_kelamin }}
                 </p>
             </div>
 
+            <!-- ✅ PERBAIKAN: tanggal_masuk -->
             <div class="bg-gray-50 p-3 rounded-lg">
                 <p class="text-xs text-gray-600 mb-1">Tanggal Masuk</p>
-                <p class="text-sm font-bold text-gray-800">{{ $data_anak->tgl_masuk->format('d M Y') }}</p>
+                <p class="text-sm font-bold text-gray-800">{{ $data_anak->tanggal_masuk?->format('d M Y') }}</p>
             </div>
 
+            <!-- ✅ PERBAIKAN: Nama Orang Tua (Ayah & Ibu) -->
             <div class="bg-gray-50 p-3 rounded-lg">
                 <p class="text-xs text-gray-600 mb-1">Nama Orang Tua</p>
-                <p class="text-sm font-bold text-gray-800">{{ $data_anak->nama_Ortu ?? '-' }}</p>
+                <p class="text-sm font-bold text-gray-800">
+                    @if($data_anak->nama_ayah && $data_anak->nama_ibu)
+                        👨 {{ $data_anak->nama_ayah }} & 👩 {{ $data_anak->nama_ibu }}
+                    @elseif($data_anak->nama_ayah)
+                        👨 {{ $data_anak->nama_ayah }}
+                    @elseif($data_anak->nama_ibu)
+                        👩 {{ $data_anak->nama_ibu }}
+                    @else
+                        -
+                    @endif
+                </p>
             </div>
 
             <div class="bg-gray-50 p-3 rounded-lg md:col-span-2">
                 <p class="text-xs text-gray-600 mb-1">Alamat</p>
                 <p class="text-sm font-bold text-gray-800">{{ $data_anak->alamat ?? '-' }}</p>
             </div>
+            
+            <div class="bg-gray-50 p-3 rounded-lg md:col-span-2">
+                <p class="text-xs text-gray-600 mb-1">Alamat Orang Tua</p>
+                <p class="text-sm font-bold text-gray-800">{{ $data_anak->alamat_orang_tua ?? '-' }}</p>
+            </div>
         </div>
 
-        <!-- ✅ INFO SISTEM - TARUH DI SINI (Paling Bawah Card) -->
+        <!-- INFO SISTEM -->
         <div class="mt-6 pt-4 border-t border-gray-200 text-xs text-gray-500">
             <div class="grid grid-cols-2 gap-4">
                 <div>Dibuat: {{ $data_anak->created_at ? $data_anak->created_at->format('d M Y, H:i') : '-' }}</div>
@@ -111,6 +130,6 @@
             </div>
         </div>
 
-    </div> <!-- Penutup Card Utama -->
+    </div>
 </div>
 @endsection
