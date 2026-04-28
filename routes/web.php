@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PengurusController; //
 use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DataAnakController;
 
 Route::get('/', function () {
     return view('dashboard');
@@ -13,7 +14,7 @@ Route::get('/', function () {
 // 🔹 Dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
-    })->middleware(['auth', 'verified'])->name('dashboard');
+    })->middleware(['auth',])->name('dashboard');
     
     // 🔹 Route pengurus (CRUD)
     Route::resource('pengurus', PengurusController::class)
@@ -33,22 +34,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
-
-// // data anak
-// use App\Http\Controllers\DataAnakController;
-
-// Route::get('/', function () {
-//     return redirect()->route('data-anak.index');
-// // donatur
-// Route::get('/', function () {
-//     return redirect()->route('donatur.index');
-
-// });
-// });
-// Route::resource('data-anak', DataAnakController::class);
-// Route::resource('donatur', DonaturController::class);
-
 // 🔓 Route untuk halaman login (GET)
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
@@ -57,3 +42,8 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 
 // Route logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+require __DIR__.'/auth.php';
+
+
+
