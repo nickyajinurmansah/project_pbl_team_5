@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('header', 'Tambah Donatur')
 @section('content')
     <div class="mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Tambah Data Donatur</h1>
