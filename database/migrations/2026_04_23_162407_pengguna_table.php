@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration
 {
     public function up(): void
-    {
+    {if (!Schema::hasTable('pengguna')) {
         Schema::create('pengguna', function (Blueprint $table) {
             $table->integer('id_pengguna')->autoIncrement()->primary(); // Sesuai manual: INT
             $table->string('nama', 45);
@@ -23,6 +23,8 @@ return new class extends Migration
             // $table->foreign('Akun_id_Akun')->references('id_Akun')->on('Akun');
         });
     }
+}
+    
 
     public function down(): void
     {

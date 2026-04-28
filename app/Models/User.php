@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -13,7 +14,7 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
-    use Notifiable;
+      use HasFactory, Notifiable; 
 
     // 1️⃣ Arahkan ke tabel 'Akun' di database
     protected $table = 'Akun'; 
@@ -30,7 +31,7 @@ class User extends Authenticatable
         'username', 
         'password', 
         'role', 
-        'status'
+        
     ];
     
     // 4️⃣ Sembunyikan password saat dikonversi ke array/JSON (Keamanan)

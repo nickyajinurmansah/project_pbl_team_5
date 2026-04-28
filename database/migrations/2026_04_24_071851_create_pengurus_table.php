@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (!Schema::hasTable('pengguna')) {
         Schema::create('pengurus', function (Blueprint $table) {
             $table->id();
             $table->string('nama', 45);
@@ -26,6 +27,7 @@ return new class extends Migration
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
     }
+}
 
     /**
      * Reverse the migrations.

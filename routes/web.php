@@ -7,8 +7,8 @@ use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('dashboard');
+})->name('dashboard');
 
 // 🔹 Dashboard
 Route::get('/dashboard', function () {
@@ -35,19 +35,19 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-// data anak
-use App\Http\Controllers\DataAnakController;
+// // data anak
+// use App\Http\Controllers\DataAnakController;
 
-Route::get('/', function () {
-    return redirect()->route('data-anak.index');
-// donatur
-Route::get('/', function () {
-    return redirect()->route('donatur.index');
+// Route::get('/', function () {
+//     return redirect()->route('data-anak.index');
+// // donatur
+// Route::get('/', function () {
+//     return redirect()->route('donatur.index');
 
-});
-});
-Route::resource('data-anak', DataAnakController::class);
-Route::resource('donatur', DonaturController::class);
+// });
+// });
+// Route::resource('data-anak', DataAnakController::class);
+// Route::resource('donatur', DonaturController::class);
 
 // 🔓 Route untuk halaman login (GET)
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

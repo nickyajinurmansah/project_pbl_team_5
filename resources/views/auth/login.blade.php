@@ -109,7 +109,6 @@
                 <img src="{{ asset('images/kids-welcome.png') }}" alt="Anak Panti" class="h-48 md:h-64 w-auto object-contain">
             </div>
             
-
             <button type="submit" form="loginForm" class="btn-login">
                 Log In
             </button>
