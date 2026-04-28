@@ -11,24 +11,27 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+        // 1. Tabel Akun
+        Schema::create('akun', function (Blueprint $table) {
+            $table->id('id_Akun'); // Ini sudah otomatis Primary Key
+            $table->string('username')->unique();
             $table->string('password');
+            $table->enum('role', ['Admin', 'Yayasan', 'Pengasuh', 'Anak Panti Eksternal']);
             $table->rememberToken();
             $table->timestamps();
         });
 
+        // 2. Tabel Password Reset
         Schema::create('password_reset_tokens', function (Blueprint $table) {
             $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
         });
 
+        // 3. Tabel Sessions
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
+            // user_id harus merujuk ke id_Akun di tabel akun
             $table->foreignId('user_id')->nullable()->index();
             $table->string('ip_address', 45)->nullable();
             $table->text('user_agent')->nullable();
@@ -42,7 +45,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        // PERBAIKAN: Nama tabel harus 'akun' agar bisa di-refresh tanpa error exist
+        Schema::dropIfExists('akun'); 
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }

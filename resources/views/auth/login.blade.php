@@ -67,7 +67,7 @@
             <p class="text-gray-600 text-sm mb-6 font-medium">masukan username dan password anda!</p>
 
             {{-- Form Login --}}
-            <form method="POST" action="{{ route('login.post') }}" class="space-y-4 w-full max-w-xs">
+            <form method="POST" action="{{ route('login') }}" class="space-y-4 w-full max-w-xs">
                 @csrf
                 
                 {{-- Pesan Error --}}
@@ -118,7 +118,7 @@
     </div>
 
     {{-- Form tersembunyi untuk tombol kanan --}}
-    <form id="loginForm" method="POST" action="{{ route('login.post') }}" class="hidden">
+    <form id="loginForm" method="POST" action="{{ route('login') }}" class="hidden">
         @csrf
         <input type="hidden" name="username" id="hiddenUsername">
         <input type="hidden" name="password" id="hiddenPassword">

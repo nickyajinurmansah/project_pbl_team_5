@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * 📘 MODEL AUTENTIKASI (User)
@@ -13,10 +14,10 @@ use Illuminate\Notifications\Notifiable;
  */
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasFactory;
 
     // 1️⃣ Arahkan ke tabel 'Akun' di database
-    protected $table = 'Akun'; 
+    protected $table = 'akun'; 
 
     // 2️⃣ Primary Key sesuai tabel Akun
     protected $primaryKey = 'id_Akun'; 
@@ -30,7 +31,6 @@ class User extends Authenticatable
         'username', 
         'password', 
         'role', 
-        'status'
     ];
     
     // 4️⃣ Sembunyikan password saat dikonversi ke array/JSON (Keamanan)
@@ -44,6 +44,6 @@ class User extends Authenticatable
      */
     public function getAuthIdentifierName()
     {
-        return 'username';
+        return 'id_Akun'; //return 'Username' ini adalah masalah
     }
 }
