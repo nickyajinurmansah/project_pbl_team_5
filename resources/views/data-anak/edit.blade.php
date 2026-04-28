@@ -1,8 +1,8 @@
 @extends('layouts.app')
-
-@php
-    $header = 'Edit Data Anak Panti';
-@endphp
+@section('header', 'Edit data Anak Panti')
+<!-- @php
+    $header = 'Edit Data Anak';  // ← JUDUL DI HEADER ATAS
+@endphp -->
 
 @section('content')
 <div class="max-w-6xl mx-auto px-4 py-6">

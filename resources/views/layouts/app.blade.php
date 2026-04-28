@@ -7,11 +7,8 @@
     
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-
 <body class="font-sans antialiased bg-[#C6DBA6] flex h-screen overflow-hidden">
-
     @include('layouts.navigation')
-
     <div class="flex-1 flex flex-col ml-64 h-screen">
         
         <!-- HEADER -->
@@ -20,19 +17,19 @@
                 <div class="p-2 bg-white/40 rounded-xl">
                     <!-- icon -->
                 </div>
+                <h1 class="text-2xl font-bold text-gray-800">@yield('header')</h1>
+            </div>
 
-                <h1 class="text-3xl font-bold text-green-900">
-                    {{ $header ?? 'Data Anak' }}
-                </h1>
+            {{-- SLOT TENGAH: Tombol aksi per halaman --}}
+            <div class="flex-1 flex justify-center">
+                @yield('header_action')
             </div>
 
             <div class="flex items-center gap-6">
-
                 <!-- notif -->
                 <button class="relative p-2 bg-white rounded-full shadow-sm">
                     🔔
                 </button>
-
                 <!-- user -->
                 <div class="flex items-center gap-3">
                     <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
@@ -41,13 +38,6 @@
                         <span class="text-sm text-green-700 block">Admin</span>
                     </div>
                 </div>
-
-                <!-- logout -->
-                <!-- <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit">Logout</button>
-                </form> -->
-
             </div>
         </header>
 
@@ -55,8 +45,6 @@
         <main class="flex-1 overflow-y-auto px-10 pb-10">
             @yield('content')
         </main>
-
     </div>
-
 </body>
 </html>

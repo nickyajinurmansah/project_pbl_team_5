@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('header', 'Data Pengurus')
 @section('content')
 
 <div class="bg-white p-6 rounded shadow">
@@ -16,9 +16,11 @@
             <th class="p-2">No</th>
             <th class="p-2">ID</th>
             <th class="p-2">Nama</th>
+            <th class="p-2">Jenis Kelamin</th>
             <th class="p-2">Jabatan</th>
             <th class="p-2">No HP</th>
             <th class="p-2">Email</th>
+            <th class="p-2">Alamat</th>
             <th class="p-2">Foto</th>
             <th class="p-2">Bio</th>
             <th class="p-2">Status</th>
@@ -32,10 +34,12 @@
             <td class="p-2">{{ $loop->iteration }}</td>
             <td class="p-2">{{ $p->id }}</td>
             <td class="p-2">{{ $p->nama }}</td>
+            <td class="p-2">{{ $p->jenisKelamin }}</td>
             <td class="p-2">{{ $p->jabatan }}</td>
             <td class="p-2">{{ $p->no_hp }}</td>
             <td class="p-2">{{ $p->email }}</td>
-
+            <td class="p-2">{{ $p->alamat }}</td>
+            
             <td class="p-2">
                 <img src="{{ asset('storage/' . $p->foto) }}"
                      width="60" class="mx-auto">

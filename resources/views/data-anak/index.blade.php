@@ -1,11 +1,16 @@
 @extends('layouts.app')
-
-@php
-    $header = 'Data Anak Panti';
-@endphp
+@section('header', 'Data Anak Panti')
+<!-- @php
+    $header = 'Data Anak';  // ← JUDUL DI HEADER ATAS
+@endphp -->
 
 @section('content')
-<div class="max-w-7xl mx-auto px-4 py-6">
+<!-- <div class="bg-white p-6 rounded shadow">
+    <h1 class="text-3xl font-bold text-gray-800 flex items-center">
+        <span class="mr-2">📂</span> Data Anak
+    </h1>
+    <p class="text-gray-600 mt-1">Kelola data anak panti asuhan</p>
+</div> -->
 
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
