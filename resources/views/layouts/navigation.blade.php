@@ -35,8 +35,9 @@
         </a>
 
         <!-- Anak -->
-        <a href="#"
-           class="flex items-center gap-4 px-4 py-3 text-white hover:bg-white/20 rounded-2xl">
+        <a href="{{ route('data-anak.index') }}"
+           class="flex items-center gap-4 px-4 py-3   rounded-2xl  font-semibold
+           {{ request()->routeIs('data-anak.*') ? 'bg-white text-[#A3C673]' : 'text-white hover:bg-white/20' }}" >
             Data anak
         </a>
 

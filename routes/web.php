@@ -13,13 +13,20 @@ Route::get('/', function () {
 // 🔹 Dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-// 🔹 Route pengurus (CRUD)
-Route::resource('pengurus', PengurusController::class)
+    })->middleware(['auth', 'verified'])->name('dashboard');
+    
+    // 🔹 Route pengurus (CRUD)
+    Route::resource('pengurus', PengurusController::class)
     ->middleware(['auth']); // opsional, biar harus login dulu
-
-// 🔹 Profile
+    
+    // 🔹 Route data-anak (CRUD)
+    Route::resource('data-anak', DataAnakController::class)->middleware(['auth']);
+    
+    // 🔹 Route donatur (CRUD)
+    Route::middleware('auth')->group(function (){
+      Route::resource('donatur', DonaturController::class);
+    });
+    // 🔹 Profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

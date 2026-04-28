@@ -26,12 +26,14 @@ class PengurusController extends Controller
 {
     $request->validate([
         'nama' => 'required|max:45',
+        'jenisKelamin' => 'required|in:Pria, Perempuan',
         'jabatan' => 'required|max:45',
         'no_hp' => 'required|max:20',
         'email' => 'required|email|max:50',
         'foto' => 'nullable|image|mimes:jpg,jpeg,png',
         'bio' => 'required|max:100',
-        'status' => 'required|in:Aktif,non-Aktif'
+        'status' => 'required|in:Aktif,non-Aktif',
+        'alamat' => 'required|max:50'
     ]);
 
     // upload foto
@@ -43,12 +45,14 @@ class PengurusController extends Controller
 
     Pengurus::create([
         'nama' => $request->nama,
+        'jenisKelamin' => $request->jenisKelamin,
         'jabatan' => $request->jabatan,
         'no_hp' => $request->no_hp,
         'email' => $request->email,
         'foto' => $foto,
         'bio' => $request->bio,
-        'status' => $request->status
+        'status' => $request->status,
+        'alamat'=> $request->alamat
     ]);
 
     return redirect()->route('pengurus.index')->with('success', 'Data berhasil ditambah');
@@ -68,12 +72,14 @@ class PengurusController extends Controller
 
         $request->validate([
             'nama' => 'required|max:45',
+            'jenisKelamin' => 'required|in:Pria, Perempuan',
             'jabatan' => 'required|max:45',
             'no_hp' => 'required|max:20',
             'email' => 'required|email|max:50',
             'foto' => 'nullable|image|mimes:jpg,jpeg,png',
             'bio' => 'required|max:100',
-            'status' => 'required|in:Aktif,non-Aktif'
+            'status' => 'required|in:Aktif,non-Aktif',
+            'alamat' => 'required|max:50'
         ]);
 
         // cek jika upload foto baru
@@ -90,12 +96,14 @@ class PengurusController extends Controller
 
         $pengurus->update([
             'nama' => $request->nama,
+            'jenisKelamin'=> $request->jenisKelamin,
             'jabatan' => $request->jabatan,
             'no_hp' => $request->no_hp,
             'email' => $request->email,
             'foto' => $foto,
             'bio' => $request->bio,
-            'status' => $request->status
+            'status' => $request->status,
+            'alamat' => $request->alamat
         ]);
 
         return redirect()->route('pengurus.index')->with('success', 'Data berhasil diupdate');

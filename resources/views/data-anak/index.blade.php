@@ -5,7 +5,7 @@
 @endphp
 
 @section('content')
-<!-- <div class="mb-6">
+<!-- <div class="bg-white p-6 rounded shadow">
     <h1 class="text-3xl font-bold text-gray-800 flex items-center">
         <span class="mr-2">📂</span> Data Anak
     </h1>
