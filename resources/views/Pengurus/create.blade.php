@@ -24,6 +24,12 @@
             placeholder="Nama"
             class="border p-2 w-full mb-3 rounded">
 
+        <select name="jenisKelamin" class="border p-2 w-full mb-4 rounded">
+            <option value="">-- Pilih Jenis Kelamin --</option>
+            <option value="Pria" {{ old('status') == 'Pria' ? 'selected' : '' }}>Pria</option>
+            <option value="Perempuan" {{ old('status') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+        </select>
+
         <input type="text" name="jabatan" value="{{ old('jabatan') }}"
             placeholder="Jabatan"
             class="border p-2 w-full mb-3 rounded">
@@ -34,6 +40,10 @@
 
         <input type="email" name="email" value="{{ old('email') }}"
             placeholder="Email"
+            class="border p-2 w-full mb-3 rounded">
+        
+        <input type="alamat" name="alamat" value="{{ old('alamat') }}"
+            placeholder="Alamat"
             class="border p-2 w-full mb-3 rounded">
 
         <label class="block mb-1 text-sm">Upload Foto</label>

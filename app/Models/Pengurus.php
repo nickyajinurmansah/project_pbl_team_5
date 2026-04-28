@@ -13,11 +13,13 @@ class Pengurus extends Model
 
     protected $fillable = [
         'nama',
+        'jenisKelamin',
         'jabatan',
         'no_hp',
         'email',
         'foto',
         'bio',
         'status',
+        'alamat',
     ];
 }

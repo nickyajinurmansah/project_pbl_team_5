@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PengurusController; //
 use App\Http\Controllers\DonaturController;
+use App\Http\Controllers\DataAnakController; // data anak
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,13 +13,20 @@ Route::get('/', function () {
 // 🔹 Dashboard
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-// 🔹 Route pengurus (CRUD)
-Route::resource('pengurus', PengurusController::class)
+    })->middleware(['auth', 'verified'])->name('dashboard');
+    
+    // 🔹 Route pengurus (CRUD)
+    Route::resource('pengurus', PengurusController::class)
     ->middleware(['auth']); // opsional, biar harus login dulu
-
-// 🔹 Profile
+    
+    // 🔹 Route data-anak (CRUD)
+    Route::resource('data-anak', DataAnakController::class)->middleware(['auth']);
+    
+    // 🔹 Route donatur (CRUD)
+    Route::middleware('auth')->group(function (){
+      Route::resource('donatur', DonaturController::class);
+    });
+    // 🔹 Profile
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -26,17 +34,3 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
-// data anak
-use App\Http\Controllers\DataAnakController;
-
-Route::get('/', function () {
-    return redirect()->route('data-anak.index');
-// donatur
-Route::get('/', function () {
-    return redirect()->route('donatur.index');
-
-});
-});
-Route::resource('data-anak', DataAnakController::class);
-Route::resource('donatur', DonaturController::class);

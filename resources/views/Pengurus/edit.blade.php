@@ -9,9 +9,14 @@
     @method('PUT')
 
     <input type="text" name="nama" value="{{ $pengurus->nama }}" class="border p-2 w-full mb-2">
+      <select name="jenisKelamin" class="border p-2 w-full mb-2">
+        <option value="Pria" {{ $pengurus->jenisKelamin == 'Pria' ? 'selected' : '' }}>Pria</option>
+        <option value="Perempuan" {{ $pengurus->jenisKelamin == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
+    </select>
     <input type="text" name="jabatan" value="{{ $pengurus->jabatan }}" class="border p-2 w-full mb-2">
     <input type="text" name="no_hp" value="{{ $pengurus->no_hp }}" class="border p-2 w-full mb-2">
     <input type="email" name="email" value="{{ $pengurus->email }}" class="border p-2 w-full mb-2">
+    <input type="alamat" name="alamat" value="{{ $pengurus->alamat }}" class="border p-2 w-full mb-2">
 
     <img src="{{ asset('storage/'.$pengurus->foto) }}" width="100" class="mb-2">
 
