@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PengurusController; //
 use App\Http\Controllers\DonaturController;
+use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -40,3 +41,12 @@ Route::get('/', function () {
 });
 Route::resource('data-anak', DataAnakController::class);
 Route::resource('donatur', DonaturController::class);
+
+// 🔓 Route untuk halaman login (GET)
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
+// 🔐 Route untuk proses login (POST) - INI YANG HILANG!
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+
+// Route logout
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');

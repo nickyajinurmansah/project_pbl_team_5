@@ -2,48 +2,48 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Database\Factories\UserFactory;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+/**
+ * 📘 MODEL AUTENTIKASI (User)
+ * Class ini berfungsi sebagai jembatan untuk login ke tabel 'Akun'.
+ * Kita override settingan default Laravel agar membaca tabel 'Akun' 
+ * dan kolom 'username', bukan 'users' dan 'email'.
+ */
 class User extends Authenticatable
 {
-    /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
+    // 1️⃣ Arahkan ke tabel 'Akun' di database
+    protected $table = 'Akun'; 
+
+    // 2️⃣ Primary Key sesuai tabel Akun
+    protected $primaryKey = 'id_Akun'; 
+
+    public $incrementing = true;
+    protected $keyType = 'int';
+    public $timestamps = false; // Tabel Akun tidak punya created_at/updated_at
+
+    // 3️⃣ Kolom yang boleh diisi (sesuai tabel Akun)
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'username', 
+        'password', 
+        'role', 
+        'status'
     ];
-
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var list<string>
-     */
+    
+    // 4️⃣ Sembunyikan password saat dikonversi ke array/JSON (Keamanan)
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 
     ];
 
     /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
+     * 5️⃣ OVERRIDE IDENTIFIER
+     * Laravel default login pakai 'email'. Kita ganti pakai 'username'.
      */
-    protected function casts(): array
+    public function getAuthIdentifierName()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        return 'username';
     }
 }
