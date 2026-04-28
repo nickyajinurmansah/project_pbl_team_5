@@ -19,7 +19,8 @@ class Donatur extends Model
         'nama_donatur', 
         'no_hp', 
         'email', 
-        'alamat'
+        'alamat',
+        'foto',
     ];
 
     protected $casts = [

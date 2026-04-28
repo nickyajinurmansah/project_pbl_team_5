@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('header', 'Tambah Pengurus')
 @section('content')
 
 <div class="max-w-xl mx-auto bg-white p-6 rounded-xl shadow">

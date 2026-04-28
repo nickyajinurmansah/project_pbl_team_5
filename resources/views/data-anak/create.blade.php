@@ -1,8 +1,8 @@
 @extends('layouts.app')
-
-@php
+@section('header', 'Registrasi Anak Panti')
+<!-- @php
     $header = 'Registrasi Anak';  // ← INI YANG PENTING!
-@endphp
+@endphp -->
 
 @section('content')
 <div class="max-w-4xl mx-auto">
