@@ -13,18 +13,20 @@ return new class extends Migration
     {
         Schema::create('data_anak', function (Blueprint $table) {
             $table->integer('idanak_panti')->autoIncrement()->primary();
-            $table->char('NIK', 16)->unique();
-            $table->string('nama', 45);
-            $table->date('tgl_lahir');
-            $table->enum('jns_kelamin', ['L', 'P']);
-            $table->string('alamat', 45)->nullable();
-            $table->date('tgl_masuk');
-            $table->enum('status', ['Aktif', 'Alumni'])->default('Aktif');
-            $table->string('nama_Ortu', 45)->nullable();
-            $table->string('Foto', 50)->nullable();
-            $table->enum('kategori_anak', ['Internal', 'External']);
-            $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
+            $table->string('nik', 16)->unique(); // Tambahkan unique agar tidak duplikat
+            $table->string('nama_lengkap');
+            $table->date('tanggal_lahir');
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
+            $table->date('tanggal_masuk');
+            $table->string('kategori_anak');
+            $table->enum('status', ['Aktif', 'Tidak Aktif'])->default('Aktif');
+            $table->text('alamat');
+            $table->string('foto_anak')->nullable();
+
+            // --- TAMBAHAN BARU ---
+            $table->string('nama_ayah')->nullable(); // Ganti nama ortu jadi ayah
+            $table->string('nama_ibu')->nullable();  // Dan ibu
+            $table->text('alamat_orang_tua')->nullable(); // Alamat ortu
         });
     }
 
