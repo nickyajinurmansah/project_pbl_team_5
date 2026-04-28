@@ -7,9 +7,6 @@ use App\Http\Controllers\DonaturController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DataAnakController;
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('dashboard');
 
 // 🔹 Dashboard
 Route::get('/dashboard', function () {
@@ -43,7 +40,7 @@ Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 // Route logout
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-require __DIR__.'/auth.php';
+// require __DIR__.'/auth.php';
 
 
 
